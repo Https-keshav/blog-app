@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 My Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>📝 My Blog</h1>
+        <a href="/new" class="btn">Create New Post</a>
+    </header>
+
+    <% if (post.length === 0) { %> 
+        <p>No posts yet. Create one!</p>
+    <% } else { %> 
+        <% post.forEach(p => { %>
+            <div class="post-card">
+                <h2><%= p.title %></h2>
+                <p><%= p.content %></p>
+
+                <form action="/delete/<%= p.id %>" method="post">
+                    <button class="btn danger">Delete</button>
+                </form>
+
+                <a href="/edit/<%= p.id %>" class="btn">Edit</a>
+            </div>
+        <% }) %>
+    <% } %>
+</body>
+</html>
